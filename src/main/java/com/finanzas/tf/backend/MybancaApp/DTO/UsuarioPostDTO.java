@@ -1,21 +1,14 @@
-package com.finanzas.tf.backend.MybancaApp.models;
+package com.finanzas.tf.backend.MybancaApp.DTO;
 
+import com.finanzas.tf.backend.MybancaApp.models.Usuario;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
 
-@Entity
 @Data
-@Table(name = "usuarios")
-public class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idUsuario;
+public class UsuarioPostDTO {
 
     @Length(max = 25,message = "El nombre completo no debe de pasar los 25 caractere")
     @NotNull
@@ -29,12 +22,11 @@ public class Usuario {
     @NotNull
     private String DNI;
 
-    //TODO: Agregar password(Spring Security)
-
-    @OneToMany(mappedBy = "usuario")
-    private List<Cartera> carteras;
-
-    public Usuario(){
-        this.carteras=new ArrayList<>();
+    public Usuario toEntity(){
+        Usuario usuario = new Usuario();
+        usuario.setNombreCompleto(this.nombreCompleto);
+        usuario.setEmail(this.email);
+        usuario.setDNI(this.DNI);
+        return usuario;
     }
 }
