@@ -29,4 +29,9 @@ public class TipoCalendarioController {
         TipoCalendarioDTO tipoCalendarioDTO = new TipoCalendarioDTO(tipoCalendarioService.save(tipoCalendario));
         return tipoCalendarioDTO;
     }
+
+    @DeleteMapping("{id}")
+    public void deleteCalendario(@PathVariable()Integer id)throws Exception{
+        tipoCalendarioService.deleteById(id);
+    }
 }

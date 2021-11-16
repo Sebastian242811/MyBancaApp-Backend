@@ -2,6 +2,7 @@ package com.finanzas.tf.backend.MybancaApp.DTO;
 
 import com.finanzas.tf.backend.MybancaApp.models.*;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
+@Component
 public class CarteraPostDTO {
 
     @NotNull
@@ -18,14 +20,20 @@ public class CarteraPostDTO {
     //@NotNull
     //private String tipoCambio;
 
-    //private Valor valor;
+    private Integer idValor;
 
-    //private Usuario usuario;
+    private Integer idUsuario;
 
-    //private Movimiento movimiento;
+    private Integer idMovimiento;
 
-    //private TipoCalendario tipoCalendario;
+    private Integer idCalendario;
 
-    //private Descuento descuento;
+    private Integer idDescuento;
+
+    public Cartera toEntity(){
+        Cartera cartera = new Cartera();
+        cartera.setDCartera(this.getDCartera());
+        return cartera;
+    }
 
 }

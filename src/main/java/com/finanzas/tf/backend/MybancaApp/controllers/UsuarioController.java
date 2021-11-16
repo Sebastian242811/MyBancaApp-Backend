@@ -25,10 +25,14 @@ public class UsuarioController {
     }
 
     @PostMapping
-    @ApiResponses(value = {@ApiResponse(responseCode = "500",description = "Verifique que el nombre no pase los 25 caracteres y haber escrito bien el DNI y su email")})
     public UsuarioDTO createUsuario(@RequestBody()UsuarioPostDTO usuarioPostDTO)throws Exception{
         Usuario usuario = usuarioPostDTO.toEntity();
         UsuarioDTO usuarioDTO = new UsuarioDTO(usuarioService.save(usuario));
         return usuarioDTO;
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteUsuario(@PathVariable() Integer id)throws Exception{
+        usuarioService.deleteById(id);
     }
 }

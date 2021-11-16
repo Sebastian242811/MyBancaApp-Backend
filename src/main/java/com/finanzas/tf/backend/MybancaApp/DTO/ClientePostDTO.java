@@ -3,10 +3,12 @@ package com.finanzas.tf.backend.MybancaApp.DTO;
 import com.finanzas.tf.backend.MybancaApp.models.Cliente;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
 
 @Data
+@Component
 public class ClientePostDTO {
 
     @Length(max = 50, message = "el nombre del cliente no debe tener mas de 50 caracteres")

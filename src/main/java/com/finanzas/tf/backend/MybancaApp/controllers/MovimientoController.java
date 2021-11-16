@@ -28,4 +28,9 @@ public class MovimientoController {
         MovimientoDTO movimientoDTO = new MovimientoDTO(movimientoService.save(movimiento));
         return movimientoDTO;
     }
+
+    @DeleteMapping("{id}")
+    public void deleteMovimiento(@PathVariable() Integer id)throws Exception{
+        movimientoService.deleteById(id);
+    }
 }

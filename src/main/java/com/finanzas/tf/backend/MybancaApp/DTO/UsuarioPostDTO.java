@@ -3,11 +3,13 @@ package com.finanzas.tf.backend.MybancaApp.DTO;
 import com.finanzas.tf.backend.MybancaApp.models.Usuario;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Data
+@Component
 public class UsuarioPostDTO {
 
     @Length(max = 25,message = "El nombre completo no debe de pasar los 25 caractere")

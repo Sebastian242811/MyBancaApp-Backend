@@ -3,10 +3,12 @@ package com.finanzas.tf.backend.MybancaApp.DTO;
 import com.finanzas.tf.backend.MybancaApp.models.Tasa;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
 
 @Data
+@Component
 public class TasaPostDTO {
     @Length(max = 30, message = "El nombre de la tasa debe tener maxiomo 30 caracteres")
     @NotNull

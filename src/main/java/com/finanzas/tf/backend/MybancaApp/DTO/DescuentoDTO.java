@@ -12,13 +12,12 @@ public class DescuentoDTO {
 
     private String tipoDescuento;
 
-    private TasaDTO tasaDTO;
+    private TasaDTO tasa;
 
     public DescuentoDTO(Descuento descuento){
-        TasaDTO tasaDTO= new TasaDTO(descuento.getTasa());
         this.setIdDescuento(descuento.getIdDescuento());
         this.setMontoFinanciar(descuento.getMontoFinanciar());
         this.setTipoDescuento(descuento.getTipoDescuento());
-        this.setTasaDTO(tasaDTO);
+        this.setTasa(new TasaDTO(descuento.getTasa()));
     }
 }

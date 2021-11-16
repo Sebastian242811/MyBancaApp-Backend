@@ -28,4 +28,9 @@ public class MonedaController {
         MonedaDTO monedaDTO = new MonedaDTO(monedaService.save(moneda));
         return monedaDTO;
     }
+
+    @DeleteMapping("{id}")
+    public void deleteMonedaById(@PathVariable()Integer id)throws  Exception{
+        monedaService.deleteById(id);
+    }
 }

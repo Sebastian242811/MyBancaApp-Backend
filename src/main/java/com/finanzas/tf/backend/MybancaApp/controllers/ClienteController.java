@@ -29,4 +29,9 @@ public class ClienteController {
         return clienteDTO;
     }
 
+    @DeleteMapping("{id}")
+    public void deleteCliente(@PathVariable() Integer id)throws Exception{
+        clienteService.deleteById(id);
+    }
+
 }

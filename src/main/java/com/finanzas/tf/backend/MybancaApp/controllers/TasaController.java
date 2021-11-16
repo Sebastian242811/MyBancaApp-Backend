@@ -28,4 +28,9 @@ public class TasaController {
         TasaDTO tasaDTO= new TasaDTO(tasaService.save(tasa));
         return tasaDTO;
     }
+
+    @DeleteMapping("{id}")
+    public void deleteTasa(@PathVariable()Integer id)throws  Exception{
+        tasaService.deleteById(id);
+    }
 }
