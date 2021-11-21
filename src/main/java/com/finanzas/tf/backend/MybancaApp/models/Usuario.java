@@ -1,6 +1,8 @@
 package com.finanzas.tf.backend.MybancaApp.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -12,6 +14,8 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "usuarios")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,12 +33,17 @@ public class Usuario {
     @NotNull
     private String DNI;
 
-    //TODO: Agregar password(Spring Security)
+    @Length(max = 20,message = "El nombre de usuario no debe tener mas de 20 caracteres")
+    @NotNull
+    private String usuario;
+
+    @NotNull
+    private String password;
 
     @OneToMany(mappedBy = "usuario")
-    private List<Cartera> carteras;
+    private List<Cartera> carteras = new ArrayList<>();
 
-    public Usuario(){
-        this.carteras=new ArrayList<>();
-    }
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Rol> roles = new ArrayList<>();
+
 }

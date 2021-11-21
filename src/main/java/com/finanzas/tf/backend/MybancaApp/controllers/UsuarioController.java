@@ -1,8 +1,10 @@
 package com.finanzas.tf.backend.MybancaApp.controllers;
 
+import com.finanzas.tf.backend.MybancaApp.DTO.RolDTO;
 import com.finanzas.tf.backend.MybancaApp.DTO.UsuarioDTO;
 import com.finanzas.tf.backend.MybancaApp.DTO.UsuarioPostDTO;
 import com.finanzas.tf.backend.MybancaApp.models.Usuario;
+import com.finanzas.tf.backend.MybancaApp.services.RolService;
 import com.finanzas.tf.backend.MybancaApp.services.UsuarioService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -19,6 +21,9 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+    @Autowired
+    private RolService rolService;
+
     @GetMapping
     public List<UsuarioDTO> getAll() throws Exception{
         return usuarioService.findAll().stream().map(UsuarioDTO::new).collect(Collectors.toList());
@@ -27,6 +32,7 @@ public class UsuarioController {
     @PostMapping
     public UsuarioDTO createUsuario(@RequestBody()UsuarioPostDTO usuarioPostDTO)throws Exception{
         Usuario usuario = usuarioPostDTO.toEntity();
+        usuario.getRoles().add(rolService.findById(2).get());
         UsuarioDTO usuarioDTO = new UsuarioDTO(usuarioService.save(usuario));
         return usuarioDTO;
     }

@@ -1,7 +1,10 @@
 package com.finanzas.tf.backend.MybancaApp.DTO;
 
+import com.finanzas.tf.backend.MybancaApp.models.Descuento;
 import com.finanzas.tf.backend.MybancaApp.models.Tasa;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class TasaDTO {
@@ -15,6 +18,7 @@ public class TasaDTO {
     private Double valorTasa;
 
     private Integer capitalizacionTasa;
+
 
     public TasaDTO(Tasa tasa){
         this.setIdTasa(tasa.getIdTasa());
